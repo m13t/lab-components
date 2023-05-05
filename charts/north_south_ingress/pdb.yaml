@@ -1,0 +1,11 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: north-south-ingress
+  namespace: istio-ingress
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: north-south-ingress
+      istio: north-south-ingress

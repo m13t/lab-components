@@ -1,0 +1,15 @@
+configs:
+  # External hostname
+  url: "https://argocd.m13t.io"
+
+  cm:
+    # Set banner to display which instance of Argo
+    ui.bannercontent: "M13T Labs"
+    ui.bannerpermanent: "true"
+
+    # OIDC authentication
+    oidc.config: |
+      name: M13T
+      issuer: https://idp.m13t.io/webman/sso
+      clientID: df8cf3849c213f00286b751417ab6a95
+      clientSecret: FgasiF52XtWRDtQMTc6A5iqOHHuAmCgi

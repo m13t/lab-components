@@ -1,0 +1,115 @@
+global:
+  logging:
+    level: warn
+
+  affinity:
+    nodeAffinity:
+      matchExpressions:
+        - key: kubernetes.io/arch
+          operator: In
+          values:
+            - amd64
+
+applicationSet:
+  logLevel: warn
+
+  podAnnotations:
+    prometheus.io/port: "8080"
+    prometheus.io/scrape: "true"
+
+  resources:
+    requests:
+      cpu: 250m
+      memory: 256Mi
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+
+controller:
+  podAnnotations:
+    prometheus.io/port: "8082"
+    prometheus.io/scrape: "true"
+
+  resources:
+    requests:
+      cpu: 250m
+      memory: 512Mi
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+
+dex:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 150m
+      memory: 256Mi
+
+redis:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 150m
+      memory: 256Mi
+
+repoServer:
+  podAnnotations:
+    prometheus.io/port: "8084"
+    prometheus.io/scrape: "true"
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+
+notifications:
+  podAnnotations:
+    prometheus.io/port: "9001"
+    prometheus.io/scrape: "true"
+
+server:
+  podAnnotations:
+    prometheus.io/port: "8083"
+    prometheus.io/scrape: "true"
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+
+configs:
+  params:
+    # Disavble TLS, will be handled by ingress
+    server.insecure: true
+
+    # Enable progressive syncs on application sets
+    applicationsetcontroller.enable.progressive.syncs: true
+
+  ssh:
+    extraHosts: |
+      git.m13t.dev ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIywnWSumZSmTaWfU01a2SOD50IRV2w7g5uEqJtf5HWM
+
+  secret:
+    argocdServerAdminPassword: '$2y$10$xgjEIx2.Xoux8DVV4JHzBeTwzjWipOvhz/zX1AaPKaHp74Nd/KAS2'
+    argocdServerAdminPasswordMtime: '2023-01-01T00:00:00Z'
+
+  cm:
+    # Track with annotations
+    application.resourceTrackingMethod: annotation
+
+    # Enable Helm in Kustomize
+    kustomize.buildOptions: --enable-helm
+
+    resource.customizations.ignoreDifferences.all: |
+      managedFieldsManagers:
+        - pilot-discovery

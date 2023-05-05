@@ -1,0 +1,9 @@
+name: kiali
+
+enabled: 'true'
+
+helm:
+  repo: https://kiali.org/helm-charts
+  revision: 1.66.0
+  chart: kiali-server
+  namespace: istio-system

@@ -1,0 +1,5 @@
+resources:
+  - credentials.yaml
+  - projects.yaml
+  - components.yaml
+  - platform.yaml

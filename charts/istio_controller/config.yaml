@@ -1,0 +1,12 @@
+name: istio_controller
+
+enabled: 'true'
+
+helm:
+  repo: https://istio-release.storage.googleapis.com/charts
+  revision: 1.17.2
+  chart: istiod
+  namespace: istio-system
+
+sync:
+  phase: secondary

@@ -1,0 +1,9 @@
+name: argo_rollouts
+
+enabled: 'true'
+
+helm:
+  repo: https://argoproj.github.io/argo-helm
+  revision: 2.25.0
+  chart: argo-rollouts
+  namespace: argo-rollouts

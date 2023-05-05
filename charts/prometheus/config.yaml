@@ -1,0 +1,9 @@
+name: prometheus
+
+enabled: 'true'
+
+helm:
+  repo: https://prometheus-community.github.io/helm-charts
+  revision: 21.0.0
+  chart: prometheus
+  namespace: monitoring

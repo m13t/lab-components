@@ -1,0 +1,8 @@
+persistence:
+  enabled: true
+
+# livenessProbe:
+#   initialDelaySeconds: 300
+
+# readinessProbe:
+#   initialDelaySeconds: 300

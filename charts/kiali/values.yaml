@@ -1,0 +1,25 @@
+auth:
+  strategy: anonymous
+
+external_services:
+  grafana:
+    enabled: false
+  tracing:
+    enabled: false
+  prometheus:
+    url: http://prometheus-server.monitoring/
+  istio:
+    component_status:
+      components:
+        - app_label: istiod
+          is_core: true
+          is_proxy: false
+          namespace: istio-system
+        - app_label: north-south-ingress
+          is_core: true
+          is_proxy: true
+          namespace: istio-ingress
+        - app_label: east-west-ingress
+          is_core: true
+          is_proxy: true
+          namespace: istio-ingress

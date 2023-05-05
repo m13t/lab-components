@@ -1,0 +1,12 @@
+name: argocd
+
+enabled: 'true'
+
+helm:
+  repo: https://argoproj.github.io/argo-helm
+  revision: 5.31.1
+  chart: argo-cd
+  namespace: argocd
+
+sync:
+  phase: primary

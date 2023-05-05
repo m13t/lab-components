@@ -1,0 +1,9 @@
+name: grafana
+
+enabled: 'true'
+
+helm:
+  repo: https://grafana.github.io/helm-charts
+  revision: 6.55.1
+  chart: grafana
+  namespace: monitoring

@@ -1,0 +1,21 @@
+service:
+  ports:
+    - name: http2
+      port: 8080
+      protocol: TCP
+      targetPort: 80
+    - name: https
+      port: 8443
+      protocol: TCP
+      targetPort: 443
+
+autoscaling:
+  minReplicas: 2
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 128Mi
+  limits:
+    cpu: 1000m
+    memory: 1024Mi

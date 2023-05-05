@@ -1,0 +1,31 @@
+meshConfig:
+  accessLogFile: '/dev/stdout'
+  ingressService: north-south-ingress
+  ingressSelector: north-south-ingress
+
+  meshMTLS:
+    minProtocolVersion: TLSV1_3
+
+  outboundTrafficPolicy:
+    mode: REGISTRY_ONLY
+
+  enableTracing: true
+
+  defaultConfig:
+    proxyMetadata:
+      ISTIO_META_DNS_CAPTURE: 'true'
+      ISTIO_META_DNS_AUTO_ALLOCATE: 'true'
+
+pilot:
+  autoscaleMin: 2
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+    limits:
+      cpu: 1000m
+      memory: 1024Mi
+
+istio_cni:
+  enabled: true

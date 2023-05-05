@@ -1,0 +1,12 @@
+name: sealed_secrets
+
+enabled: 'true'
+
+helm:
+  repo: https://bitnami-labs.github.io/sealed-secrets
+  revision: 2.8.1
+  chart: sealed-secrets
+  namespace: kube-system
+
+sync:
+  phase: primary

@@ -1,0 +1,12 @@
+name: cert_manager
+
+enabled: 'true'
+
+helm:
+  repo: https://charts.jetstack.io
+  revision: v1.11.1
+  chart: cert-manager
+  namespace: cert-manager
+
+sync:
+  phase: secondary
