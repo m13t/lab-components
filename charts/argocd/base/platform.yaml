@@ -10,12 +10,11 @@ metadata:
 spec:
   project: platform
   sources:
-    - repoURL: ssh://argo@git.m13t.dev/platform
+    - repoURL: git@github.com:m13t/lab-platform.git
       targetRevision: HEAD
       path: overlays/change/me
   destination:
     name: in-cluster
-    namespace: cert-manager
   syncPolicy:
     automated:
       prune: true
