@@ -40,14 +40,14 @@ spec:
         generators:
           # Look for components in the charts directory
           - git:
-              repoURL: ssh://argo@git.m13t.dev/components
+              repoURL: git@github.com:m13t/lab-components.git
               revision: HEAD
               files:
                 - path: charts/**/config.yaml
 
           # Look for components or overrides in the per-environment directory
           - git:
-              repoURL: ssh://argo@git.m13t.dev/components
+              repoURL: git@github.com:m13t/lab-components.git
               revision: HEAD
               files:
                 - path: values/home/lab/**/config.yaml
@@ -83,13 +83,13 @@ spec:
 
         # Second repository is for additional vanilla manifests
         # inside the chart directory
-        - repoURL: ssh://argo@git.m13t.dev/components
+        - repoURL: git@github.com:m13t/lab-components.git
           path: 'charts/{{.path.basename}}'
           targetRevision: HEAD
 
         # Third directory is for per-environment overrides and also acts
         # as the reference for the helm values
-        - repoURL: ssh://argo@git.m13t.dev/components
+        - repoURL: git@github.com:m13t/lab-components.git
           path: 'values/change/me/{{.path.basename}}'
           targetRevision: HEAD
           ref: values
