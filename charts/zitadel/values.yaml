@@ -25,8 +25,5 @@ zitadel:
   # Symetric encryption key
   masterkey: 22F7VDcWCEqPxvK7GbbqAKZuF4A3yrRe
 
-  # Don't need this
-  dbSslClientCrtSecret: null
-
 # Use 1 replica for testing
 replicaCount: 1
