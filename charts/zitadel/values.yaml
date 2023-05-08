@@ -1,0 +1,27 @@
+zitadel:
+  configmapConfig:
+    # Domain to expose Zitadel on
+    ExternalDomain: idp.m13t.io
+
+    # The external endpoint is over TLS
+    ExternalSecure: true
+
+    # Disable TLS on Zitadel. Istio will handle this
+    TLS:
+      Enabled: false
+
+    Database:
+      postgres:
+        Host: lin-21085-7519-pgsql-primary.servers.linodedb.net
+        Port: 5432
+        Database: zitadel
+
+        User:
+          Username: zitadel
+          Password: HVcW83K4ExMSHtKc
+
+  # Symetric encryption key
+  masterkey: 22F7VDcWCEqPxvK7GbbqAKZuF4A3yrRe
+
+  # Use 1 replica for testing
+  replicaCount: 1
