@@ -31,5 +31,5 @@ zitadel:
   # Don't need this
   dbSslClientCrtSecret: null
 
-  # Use 1 replica for testing
-  replicaCount: 1
+# Use 1 replica for testing
+replicaCount: 1
