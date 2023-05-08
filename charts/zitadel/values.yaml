@@ -19,6 +19,8 @@ zitadel:
         User:
           Username: zitadel
           Password: HVcW83K4ExMSHtKc
+          SSL:
+            Mode: "require"
 
   # Symetric encryption key
   masterkey: 22F7VDcWCEqPxvK7GbbqAKZuF4A3yrRe
