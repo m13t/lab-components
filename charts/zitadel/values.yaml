@@ -48,7 +48,8 @@ zitadel:
     2z9UM0EgTVYXWJZLoJpUboXLkZxNxl7JNelU3DynbHZXrLXe
     -----END CERTIFICATE-----
 
-  # Don't need this
+  # Don't need these
+  dbSslRootCrtSecret: null
   dbSslClientCrtSecret: null
 
 # Use 1 replica for testing
