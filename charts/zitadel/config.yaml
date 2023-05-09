@@ -1,9 +1,0 @@
-name: zitadel
-
-enabled: 'false'
-
-helm:
-  repo: https://charts.zitadel.com
-  revision: 4.3.0
-  chart: zitadel
-  namespace: zitadel
