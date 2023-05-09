@@ -1,6 +1,6 @@
 name: zitadel
 
-enabled: 'true'
+enabled: 'false'
 
 helm:
   repo: https://charts.zitadel.com
