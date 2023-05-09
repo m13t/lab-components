@@ -11,6 +11,9 @@ zitadel:
       Enabled: false
 
     Database:
+      # Disable cockroach config
+      cockroach: null
+
       postgres:
         Host: lin-21085-7519-pgsql-primary.servers.linodedb.net
         Port: 5432
