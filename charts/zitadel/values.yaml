@@ -25,6 +25,12 @@ zitadel:
           SSL:
             Mode: require
             RootCert: /.secrets/ca.crt
+        Admin:
+          Username: linpostgres
+          Password: xka-noPr40EpMpK1
+          SSL:
+            Mode: require
+            RootCert: /.secrets/ca.crt
 
   # Symetric encryption key
   masterkey: 22F7VDcWCEqPxvK7GbbqAKZuF4A3yrRe
