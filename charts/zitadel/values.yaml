@@ -24,6 +24,7 @@ zitadel:
           Password: HVcW83K4ExMSHtKc
           SSL:
             Mode: require
+            RootCert: /.secrets/ca.crt
 
   # Symetric encryption key
   masterkey: 22F7VDcWCEqPxvK7GbbqAKZuF4A3yrRe
