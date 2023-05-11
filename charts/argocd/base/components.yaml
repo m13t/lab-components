@@ -130,27 +130,6 @@ spec:
   # Go templates are also the standard going forward.
   goTemplate: true
 
-  strategy:
-    type: RollingSync
-    rollingSync:
-      steps:
-        - matchExpressions:
-            - key: phase
-              operator: In
-              values:
-                - primary
-        - matchExpressions:
-            - key: phase
-              operator: In
-              values:
-                - secondary
-        - matchExpressions:
-            - key: phase
-              operator: NotIn
-              values:
-                - primary
-                - secondary
-
   # Use generator to detect all helm charts
   generators:
     - merge:
