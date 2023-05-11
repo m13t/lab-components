@@ -32,6 +32,10 @@ spec:
                 - primary
                 - secondary
 
+  # Preserve applications when the application set is removed
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+
   # Use generator to detect all helm charts
   generators:
     - merge:
