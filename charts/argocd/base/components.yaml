@@ -60,9 +60,6 @@ spec:
             values:
               - 'true'
 
-          # - key: helm
-          #   operator: Exists
-
   # Begin the ArgoCD Application template
   template:
     metadata:
@@ -99,6 +96,117 @@ spec:
           path: 'values/change/me/{{.path.basename}}'
           targetRevision: HEAD
           ref: values
+
+      # Local cluster
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{.helm.namespace}}'
+
+      syncPolicy:
+        # Self heal and prune resources
+        automated:
+          selfHeal: true
+          prune: true
+
+        # Use server-side apply for better efficiency and interop
+        # between controllers making partial changes to manifests.
+        # Also enable apply out of sync only rather than trying to
+        # apply all resources in the application.
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true
+          - ApplyOutOfSyncOnly=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: custom-components
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: '2'
+spec:
+  # Use go-templating as we can use a few nice functions
+  # that are not available in the standard Argo templates.
+  # Go templates are also the standard going forward.
+  goTemplate: true
+
+  strategy:
+    type: RollingSync
+    rollingSync:
+      steps:
+        - matchExpressions:
+            - key: phase
+              operator: In
+              values:
+                - primary
+        - matchExpressions:
+            - key: phase
+              operator: In
+              values:
+                - secondary
+        - matchExpressions:
+            - key: phase
+              operator: NotIn
+              values:
+                - primary
+                - secondary
+
+  # Use generator to detect all helm charts
+  generators:
+    - merge:
+        mergeKeys:
+          - name
+        generators:
+          # Look for components in the charts directory
+          - git:
+              repoURL: git@github.com:m13t/lab-components.git
+              revision: HEAD
+              files:
+                - path: charts/**/config.yaml
+
+          # Look for components or overrides in the per-environment directory
+          - git:
+              repoURL: git@github.com:m13t/lab-components.git
+              revision: HEAD
+              files:
+                - path: values/home/lab/**/config.yaml
+
+      # Filter only on results that are enabled
+      selector:
+        matchExpressions:
+          - key: enabled
+            operator: In
+            values:
+              - 'true'
+
+          - key: helm
+            operator: DoesNotExist
+
+  # Begin the ArgoCD Application template
+  template:
+    metadata:
+      name: 'custom-{{.path.basenameNormalized}}'
+      namespace: argocd
+      labels:
+        phase: '{{default "tertiary" .sync.phase}}'
+
+      # Cleanup removed applications from the cluster
+      # finalizers:
+      #   - resources-finalizer.argocd.argoproj.io
+    spec:
+      project: components
+      sources:
+        # Second repository is for additional vanilla manifests
+        # inside the chart directory
+        - repoURL: git@github.com:m13t/lab-components.git
+          path: 'charts/{{.path.basename}}/custom'
+          targetRevision: HEAD
+
+        # Third directory is for per-environment overrides and also acts
+        # as the reference for the helm values
+        - repoURL: git@github.com:m13t/lab-components.git
+          path: 'values/home/lab/{{.path.basename}}/custom'
+          targetRevision: HEAD
 
       # Local cluster
       destination:
