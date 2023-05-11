@@ -158,7 +158,7 @@ spec:
             values:
               - 'true'
 
-          - key: helm.repo
+          - key: "helm.repo"
             operator: Exists
 
   # Begin the ArgoCD Application template
