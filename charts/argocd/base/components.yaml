@@ -159,7 +159,7 @@ spec:
               - 'true'
 
           - key: helm
-            operator: DoesNotExist
+            operator: Exist
 
   # Begin the ArgoCD Application template
   template:
