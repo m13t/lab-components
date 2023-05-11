@@ -166,8 +166,6 @@ spec:
     metadata:
       name: 'custom-{{.path.basenameNormalized}}'
       namespace: argocd
-      labels:
-        phase: '{{default "tertiary" .sync.phase}}'
 
       # Cleanup removed applications from the cluster
       # finalizers:
