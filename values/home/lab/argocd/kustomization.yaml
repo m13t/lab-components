@@ -14,7 +14,7 @@ patches:
   - target:
       group: argoproj.io
       kind: ApplicationSet
-      name: components
+      name: helm-components
     patch: |-
       - op: replace
         path: /spec/template/spec/sources/0/helm/valueFiles/1
