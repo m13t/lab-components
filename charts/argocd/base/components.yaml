@@ -158,8 +158,8 @@ spec:
             values:
               - 'true'
 
-          - key: helm.chart
-            operator: DoesNotExist
+          - key: helm.repo
+            operator: Exist
 
   # Begin the ArgoCD Application template
   template:
