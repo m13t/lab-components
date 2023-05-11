@@ -54,8 +54,14 @@ spec:
 
       # Filter only on results that are enabled
       selector:
-        matchLabels:
-          enabled: 'true'
+        matchExpressions:
+          - key: enabled
+            operator: In
+            values:
+              - 'true'
+
+          - key: helm
+            operator: Exists
 
   # Begin the ArgoCD Application template
   template:
