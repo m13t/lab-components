@@ -116,3 +116,7 @@ configs:
     resource.customizations.ignoreDifferences.all: |
       managedFieldsManagers:
         - pilot-discovery
+
+  rbac:
+    policy.csv: |
+      g, api, role:admin
