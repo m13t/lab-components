@@ -104,6 +104,9 @@ configs:
     argocdServerAdminPasswordMtime: '2023-01-01T00:00:00Z'
 
   cm:
+    # Create api user for automating requests
+    accounts.api: apiKey
+
     # Track with annotations
     application.resourceTrackingMethod: annotation
 
