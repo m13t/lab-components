@@ -83,6 +83,7 @@ spec:
             valueFiles:
               - '$values/charts/{{.path.basename}}/values.yaml'
               - '$values/values/change/me/{{.path.basename}}/values.yaml'
+            ignoreMissingValueFiles: true
 
         # Second repository is for additional vanilla manifests
         # inside the chart directory
