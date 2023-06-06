@@ -60,6 +60,9 @@ spec:
             values:
               - 'true'
 
+          - key: helm.repo
+            operator: Exists
+
   # Begin the ArgoCD Application template
   template:
     metadata:
@@ -177,13 +180,13 @@ spec:
         # Second repository is for additional vanilla manifests
         # inside the chart directory
         - repoURL: git@github.com:m13t/lab-components.git
-          path: 'charts/{{.path.basename}}/custom'
+          path: 'charts/{{.path.basename}}'
           targetRevision: HEAD
 
         # Third directory is for per-environment overrides and also acts
         # as the reference for the helm values
         - repoURL: git@github.com:m13t/lab-components.git
-          path: 'values/home/lab/{{.path.basename}}/custom'
+          path: 'values/home/lab/{{.path.basename}}'
           targetRevision: HEAD
 
       # Local cluster
