@@ -18,7 +18,7 @@ patches:
     patch: |-
       - op: replace
         path: /spec/template/spec/sources/0/helm/valueFiles/1
-        value: '$values/values/home/lab/{{.path.basename}}/values.yaml'
+        value: '$values/envs/home/lab/{{.path.basename}}/values.yaml'
       - op: replace
         path: /spec/template/spec/sources/2/path
-        value: 'values/home/lab/{{.path.basename}}'
+        value: 'envs/home/lab/{{.path.basename}}'

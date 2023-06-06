@@ -43,14 +43,14 @@ spec:
               repoURL: git@github.com:m13t/lab-components.git
               revision: HEAD
               files:
-                - path: charts/**/config.yaml
+                - path: components/**/config.yaml
 
           # Look for components or overrides in the per-environment directory
           - git:
               repoURL: git@github.com:m13t/lab-components.git
               revision: HEAD
               files:
-                - path: values/home/lab/**/config.yaml
+                - path: envs/home/lab/**/config.yaml
 
       # Filter only on results that are enabled
       selector:
@@ -84,20 +84,20 @@ spec:
           helm:
             releaseName: '{{default .path.basenameNormalized .helm.releaseName}}'
             valueFiles:
-              - '$values/charts/{{.path.basename}}/values.yaml'
-              - '$values/values/change/me/{{.path.basename}}/values.yaml'
+              - '$values/components/{{.path.basename}}/values.yaml'
+              - '$values/envs/change/me/{{.path.basename}}/values.yaml'
             ignoreMissingValueFiles: true
 
         # Second repository is for additional vanilla manifests
         # inside the chart directory
         - repoURL: git@github.com:m13t/lab-components.git
-          path: 'charts/{{.path.basename}}'
+          path: 'components/{{.path.basename}}'
           targetRevision: HEAD
 
         # Third directory is for per-environment overrides and also acts
         # as the reference for the helm values
         - repoURL: git@github.com:m13t/lab-components.git
-          path: 'values/change/me/{{.path.basename}}'
+          path: 'envs/change/me/{{.path.basename}}'
           targetRevision: HEAD
           ref: values
 
@@ -110,7 +110,7 @@ spec:
         # Self heal and prune resources
         automated:
           selfHeal: true
-          prune: true
+          #prune: true
 
         # Use server-side apply for better efficiency and interop
         # between controllers making partial changes to manifests.
@@ -145,14 +145,14 @@ spec:
               repoURL: git@github.com:m13t/lab-components.git
               revision: HEAD
               files:
-                - path: charts/**/config.yaml
+                - path: components/**/config.yaml
 
           # Look for components or overrides in the per-environment directory
           - git:
               repoURL: git@github.com:m13t/lab-components.git
               revision: HEAD
               files:
-                - path: values/home/lab/**/config.yaml
+                - path: envs/home/lab/**/config.yaml
 
       # Filter only on results that are enabled
       selector:
@@ -180,13 +180,13 @@ spec:
         # Second repository is for additional vanilla manifests
         # inside the chart directory
         - repoURL: git@github.com:m13t/lab-components.git
-          path: 'charts/{{.path.basename}}'
+          path: 'components/{{.path.basename}}'
           targetRevision: HEAD
 
         # # Third directory is for per-environment overrides and also acts
         # # as the reference for the helm values
         # - repoURL: git@github.com:m13t/lab-components.git
-        #   path: 'values/home/lab/{{.path.basename}}'
+        #   path: 'envs/home/lab/{{.path.basename}}'
         #   targetRevision: HEAD
 
       # Local cluster
@@ -198,7 +198,7 @@ spec:
         # Self heal and prune resources
         automated:
           selfHeal: true
-          prune: true
+          #prune: true
 
         # Use server-side apply for better efficiency and interop
         # between controllers making partial changes to manifests.
