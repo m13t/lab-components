@@ -183,11 +183,11 @@ spec:
           path: 'charts/{{.path.basename}}'
           targetRevision: HEAD
 
-        # Third directory is for per-environment overrides and also acts
-        # as the reference for the helm values
-        - repoURL: git@github.com:m13t/lab-components.git
-          path: 'values/home/lab/{{.path.basename}}'
-          targetRevision: HEAD
+        # # Third directory is for per-environment overrides and also acts
+        # # as the reference for the helm values
+        # - repoURL: git@github.com:m13t/lab-components.git
+        #   path: 'values/home/lab/{{.path.basename}}'
+        #   targetRevision: HEAD
 
       # Local cluster
       destination:
