@@ -192,7 +192,6 @@ spec:
       # Local cluster
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{.helm.namespace}}'
 
       syncPolicy:
         # Self heal and prune resources
@@ -205,6 +204,5 @@ spec:
         # Also enable apply out of sync only rather than trying to
         # apply all resources in the application.
         syncOptions:
-          - CreateNamespace=true
           - ServerSideApply=true
           - ApplyOutOfSyncOnly=true
