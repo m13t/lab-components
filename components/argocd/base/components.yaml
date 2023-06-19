@@ -72,8 +72,8 @@ spec:
         phase: '{{default "tertiary" .sync.phase}}'
 
       # Cleanup removed applications from the cluster
-      # finalizers:
-      #   - resources-finalizer.argocd.argoproj.io
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
     spec:
       project: components
       sources:
@@ -172,8 +172,8 @@ spec:
       namespace: argocd
 
       # Cleanup removed applications from the cluster
-      # finalizers:
-      #   - resources-finalizer.argocd.argoproj.io
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
     spec:
       project: components
       sources:
