@@ -110,7 +110,7 @@ spec:
         # Self heal and prune resources
         automated:
           selfHeal: true
-          #prune: true
+          prune: true
 
         # Use server-side apply for better efficiency and interop
         # between controllers making partial changes to manifests.
@@ -197,7 +197,7 @@ spec:
         # Self heal and prune resources
         automated:
           selfHeal: true
-          #prune: true
+          prune: true
 
         # Use server-side apply for better efficiency and interop
         # between controllers making partial changes to manifests.
