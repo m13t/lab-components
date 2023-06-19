@@ -177,17 +177,10 @@ spec:
     spec:
       project: components
       sources:
-        # Second repository is for additional vanilla manifests
-        # inside the chart directory
+        # Vanilla manifests, this will be auto-detected by ArgoCD
         - repoURL: git@github.com:m13t/lab-components.git
           path: 'components/{{.path.basename}}'
           targetRevision: HEAD
-
-        # # Third directory is for per-environment overrides and also acts
-        # # as the reference for the helm values
-        # - repoURL: git@github.com:m13t/lab-components.git
-        #   path: 'envs/home/lab/{{.path.basename}}'
-        #   targetRevision: HEAD
 
       # Local cluster
       destination:
