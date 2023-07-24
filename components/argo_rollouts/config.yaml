@@ -4,6 +4,6 @@ enabled: 'true'
 
 helm:
   repo: https://argoproj.github.io/argo-helm
-  revision: 2.26.1
+  revision: 2.31.1
   chart: argo-rollouts
   namespace: argo-rollouts
