@@ -4,7 +4,7 @@ enabled: 'true'
 
 helm:
   repo: https://argoproj.github.io/argo-helm
-  revision: 5.35.1
+  revision: 5.41.1
   chart: argo-cd
   namespace: argocd
 
