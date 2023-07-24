@@ -4,6 +4,6 @@ enabled: 'true'
 
 helm:
   repo: https://kyverno.github.io/kyverno/
-  revision: 2.7.2
+  revision: 3.0.2
   chart: kyverno
   namespace: kyverno
