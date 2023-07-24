@@ -4,7 +4,7 @@ enabled: 'true'
 
 helm:
   repo: https://bitnami-labs.github.io/sealed-secrets
-  revision: 2.8.1
+  revision: 2.11.0
   chart: sealed-secrets
   namespace: kube-system
 
