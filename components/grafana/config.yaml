@@ -4,6 +4,6 @@ enabled: 'true'
 
 helm:
   repo: https://grafana.github.io/helm-charts
-  revision: 6.55.1
+  revision: 6.58.4
   chart: grafana
   namespace: monitoring
