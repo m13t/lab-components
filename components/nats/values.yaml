@@ -1,6 +1,12 @@
 cluster:
   enabled: true
+
+  # Quorum-based RAFT consensus
   replicas: 3
+
+  # Disable advertising to enable
+  # external access to the cluster.
+  noAdvertise: true
 
 nats:
   jetstream:
@@ -9,3 +15,7 @@ nats:
     memStorage:
       enabled: true
       size: 1Gi
+
+    fileStorage:
+      enabled: true
+      size: 10Gi
