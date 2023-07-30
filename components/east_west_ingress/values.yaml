@@ -8,6 +8,10 @@ service:
       port: 443
       protocol: TCP
       targetPort: 443
+    - name: nats
+      port: 4222
+      protocol: TCP
+      targetPort: 4222
 
 autoscaling:
   minReplicas: 2
